@@ -26,12 +26,10 @@
         android:id="@+id/text_welcome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
         android:fontFamily="@font/spartan_bold"
         android:text="@string/text_welcome"
         android:textColor="@android:color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/text_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image_mars_logo" />
@@ -97,7 +95,6 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/content_description_text_input_password"
             android:autofillHints="emailAddress"
             android:hint="@string/text_input_password"
             android:importantForAutofill="yes"

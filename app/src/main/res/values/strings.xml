@@ -5,7 +5,6 @@
 
     <!-- Content descriptions -->
     <string name="content_description_image_mars_logo">Logo of the app</string>
-    <string name="content_description_text_input_password">Label to password</string>
     <!---->
 
     <!-- Fragments -->
