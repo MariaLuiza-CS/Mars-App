@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:contentDescription="@string/content_description_image_mars_logo"
         android:src="@drawable/ic_mars_app"
         app:layout_constraintBottom_toTopOf="@id/text_welcome"
@@ -39,6 +39,7 @@
         android:id="@+id/text_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/spartan_bold"
         android:text="@string/text_email"
         android:textColor="@android:color/white"
@@ -53,9 +54,11 @@
         style="@style/LoginFragmentTextInputLayout"
         app:layout_constraintBottom_toTopOf="@id/text_password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:hintAnimationEnabled="false"
+        app:expandedHintEnabled="false"
+        app:hintEnabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_email"
-        app:startIconDrawable="@drawable/ic_baseline_email_24"
         app:startIconTint="@android:color/white">
 
         <EditText
@@ -64,6 +67,7 @@
             android:autofillHints="emailAddress"
             android:hint="@string/text_input_email"
             android:importantForAutofill="yes"
+            android:textColor="@color/white"
             android:inputType="text|textEmailAddress"
             android:lines="1"
             android:textStyle="italic" />
@@ -90,8 +94,10 @@
         app:endIconTint="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_password"
-        app:startIconDrawable="@drawable/ic_baseline_lock_24">
+        app:hintAnimationEnabled="false"
+        app:expandedHintEnabled="false"
+        app:hintEnabled="false"
+        app:layout_constraintTop_toBottomOf="@id/text_password">
 
         <EditText
             android:layout_width="match_parent"
@@ -101,6 +107,7 @@
             android:importantForAutofill="yes"
             android:inputType="textPassword"
             android:lines="1"
+            android:textColor="@color/white"
             android:textStyle="italic" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -118,7 +125,8 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/text_signup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_input_password" />
 
     <TextView
         android:id="@+id/text_signup"
@@ -132,7 +140,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/text_go_signup"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_login" />
 
     <TextView
         android:id="@+id/text_go_signup"
@@ -146,7 +155,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@id/text_signup" />
+        app:layout_constraintStart_toEndOf="@id/text_signup"
+        app:layout_constraintTop_toBottomOf="@id/button_login" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

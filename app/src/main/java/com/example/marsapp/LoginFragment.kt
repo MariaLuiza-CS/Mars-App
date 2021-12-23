@@ -21,17 +21,9 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         binding = FragmentLoginBinding.bind(view)
 
-        binding.btnLogin.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.loginFragment_to_signUpFragment)
-        }
-
-//        binding.textViewLogin.setOnClickListener {
-//            Navigation.findNavController(view).navigate(R.id.loginFragment_to_signUpFragment)
-//        }
-//
-//        binding.btnViewLogin.setOnClickListener {
-//            Navigation.findNavController(view).navigate(R.id.loginFragment_to_signUpFragment)
-//        }
+        binding.buttonLogin.setOnClickListener {
+                Navigation.findNavController(binding.root).navigate(R.id.loginFragment_to_signUpFragment)
+            }
 
         return binding.root
     }
