@@ -2,6 +2,7 @@ package com.example.marsapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.marsapp.databinding.ActivityMainBinding
@@ -19,5 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         navController = navHostFragment.navController
         setContentView(binding.root)
+
     }
 }

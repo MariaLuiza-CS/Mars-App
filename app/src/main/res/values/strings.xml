@@ -29,6 +29,14 @@
     <string name="text_confirm_password">Confirm Password</string>
     <string name="text_have_account">Already have an account?</string>
     <string name="text_go_login">Login</string>
+    <string name="invalid_email">Invalid Email Address</string>
+    <string name="invalid_password_length">Minimum 8 Character Password</string>
+    <string name="invalid_password_upper_case">Must Contain 1 Upper-case Character</string>
+    <string name="invalid_password_lower_case">Must Contain 1 Lower-case Character</string>
+    <string name="invalid_password_special_character">Must Contain 1 Special Character (@#$%^&amp;+=*)</string>
+    <string name="invalid_confirm_password">Different Password</string>
+    <string name="invalid_name">Must contain something</string>
+
     <!---->
 
     <!---->
