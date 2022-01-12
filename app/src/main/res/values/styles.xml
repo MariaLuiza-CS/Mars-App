@@ -14,5 +14,7 @@
         <item name="boxCornerRadiusTopStart">10dp</item>
         <item name="boxBackgroundColor">@color/white_light</item>
         <item name="startIconTint">@android:color/white</item>
+        <item name="helperTextEnabled">true</item>
+        <item name="helperTextTextColor">@color/yellow_dark</item>
     </style>
 </resources>

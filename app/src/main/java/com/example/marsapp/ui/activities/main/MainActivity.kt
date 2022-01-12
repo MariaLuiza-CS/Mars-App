@@ -1,9 +1,10 @@
-package com.example.marsapp
+package com.example.marsapp.ui.activities.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.marsapp.R
 import com.example.marsapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,9 +16,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
+            supportFragmentManager.findFragmentById(R.id.fragment_container_main) as NavHostFragment
 
         navController = navHostFragment.navController
         setContentView(binding.root)
+
     }
 }
