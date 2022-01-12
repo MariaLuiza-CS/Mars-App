@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/black_light"
     android:padding="32dp"
-    tools:context=".LoginFragment">
+    tools:context=".ui.fragments.login.LoginFragment">
 
     <ImageView
         android:id="@+id/image_mars_logo"
@@ -55,6 +55,7 @@
         app:expandedHintEnabled="false"
         app:hintAnimationEnabled="false"
         app:hintEnabled="false"
+        app:helperText=" "
         app:layout_constraintBottom_toTopOf="@id/text_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,12 +66,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:autofillHints="emailAddress"
-            android:hint="@string/text_input_email"
             android:importantForAutofill="yes"
             android:inputType="text|textEmailAddress"
             android:lines="1"
             android:textColor="@color/white"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            tools:ignore="LabelFor" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +96,7 @@
         app:endIconTint="@android:color/white"
         app:expandedHintEnabled="false"
         app:hintAnimationEnabled="false"
-        app:hintEnabled="false"
+        app:helperText=" "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_password">
@@ -104,12 +105,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:autofillHints="emailAddress"
-            android:hint="@string/text_input_password"
             android:importantForAutofill="yes"
             android:inputType="textPassword"
             android:lines="1"
             android:textColor="@color/white"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            tools:ignore="LabelFor"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,6 +160,17 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/text_no_account"
         app:layout_constraintTop_toTopOf="@id/text_no_account" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_login"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:indeterminateTint="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

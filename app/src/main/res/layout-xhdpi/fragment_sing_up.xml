@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,10 +9,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="54dp"
         android:contentDescription="@string/content_description_image_sun"
         android:elevation="100dp"
+        android:paddingTop="64dp"
+        android:paddingEnd="64dp"
         android:src="@drawable/ic_sun"
         app:layout_constraintBottom_toTopOf="@id/layout_sign_up"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +26,6 @@
         android:background="@color/black_light"
         android:paddingStart="32dp"
         android:paddingEnd="32dp"
-        android:paddingBottom="32dp"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="27dp">
 
@@ -35,7 +33,7 @@
             android:id="@+id/button_go_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="35dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_baseline_arrow_back_24"
             android:tint="@color/white"
@@ -59,7 +57,7 @@
             android:id="@+id/text_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="84dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_name"
             android:textColor="@android:color/white"
@@ -73,6 +71,7 @@
             android:id="@+id/text_input_name"
             style="@style/TextInputLayout"
             app:expandedHintEnabled="false"
+            app:helperText=" "
             app:hintAnimationEnabled="false"
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +94,7 @@
             android:id="@+id/text_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_email"
             android:textColor="@android:color/white"
@@ -109,6 +108,7 @@
             android:id="@+id/text_input_email"
             style="@style/TextInputLayout"
             app:expandedHintEnabled="false"
+            app:helperText=" "
             app:hintAnimationEnabled="false"
             app:hintEnabled="false"
             app:layout_constraintBottom_toTopOf="@id/text_password"
@@ -124,7 +124,7 @@
                 android:inputType="text|textEmailAddress"
                 android:lines="1"
                 android:textColor="@color/white"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,7 +132,7 @@
             android:id="@+id/text_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_password"
             android:textColor="@android:color/white"
@@ -148,6 +148,7 @@
             app:endIconMode="password_toggle"
             app:endIconTint="@android:color/white"
             app:expandedHintEnabled="false"
+            app:helperText=" "
             app:hintAnimationEnabled="false"
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
@@ -161,7 +162,7 @@
                 android:inputType="textPassword"
                 android:lines="1"
                 android:textColor="@color/white"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,7 +170,7 @@
             android:id="@+id/text_confirm_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_confirm_password"
             android:textColor="@android:color/white"
@@ -198,7 +199,7 @@
                 android:inputType="textPassword"
                 android:lines="1"
                 android:textColor="@color/white"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -206,6 +207,7 @@
             android:id="@+id/button_signin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/background_gradiant_button"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/button_signin"
@@ -215,7 +217,6 @@
             app:layout_constraintBottom_toTopOf="@id/text_have_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_input_confirm_password"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
@@ -223,6 +224,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
+            android:layout_marginBottom="32dp"
             android:fontFamily="@font/spartan_regular"
             android:text="@string/text_have_account"
             android:textColor="@android:color/white"
@@ -231,7 +233,6 @@
             app:layout_constraintEnd_toStartOf="@id/text_go_login"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_signin"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
