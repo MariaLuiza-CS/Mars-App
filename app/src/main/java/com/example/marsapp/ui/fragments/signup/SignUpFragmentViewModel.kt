@@ -1,4 +1,4 @@
-package com.example.marsapp
+package com.example.marsapp.ui.fragments.signup
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -8,9 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.marsapp.data.local.entity.DatabaseHelper
 import com.example.marsapp.data.local.entity.User
 import com.example.marsapp.utils.Resource
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.launch
 
 class SignUpFragmentViewModel(private val dbHelper: DatabaseHelper) : ViewModel() {

@@ -1,8 +1,6 @@
-package com.example.marsapp
+package com.example.marsapp.ui.fragments.signup
 
-import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,17 +10,12 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.marsapp.databinding.FragmentSingUpBinding
 import com.google.firebase.auth.FirebaseAuth
-import androidx.annotation.NonNull
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
+import com.example.marsapp.R
+import com.example.marsapp.utils.ViewModelFactory
 import com.example.marsapp.data.local.DatabaseBuilder
 import com.example.marsapp.data.local.DatabaseHelperImpl
-import com.example.marsapp.data.local.entity.DatabaseHelper
 import com.example.marsapp.data.local.entity.User
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.play.core.internal.t
 import com.google.firebase.database.FirebaseDatabase
 
 
@@ -45,21 +38,15 @@ class SignUpFragment : Fragment() {
         emailFocusListener()
         passwordFocusListener()
         confirmPasswordListener()
-        initObservers()
 
         val dbHelper = DatabaseHelperImpl(DatabaseBuilder.getIntance(requireContext()))
 
         val viewModelProvider = ViewModelFactory(dbHelper)
         viewModel = ViewModelProvider(requireActivity(),
-            viewModelProvider).get(SignUpFragmentViewModel::class.java)
+            viewModelProvider)[SignUpFragmentViewModel::class.java]
 
         return binding.root
     }
-
-    private fun initObservers() {
-
-    }
-
 
     private fun nameFocusListener() {
         binding.textInputName.editText?.setOnFocusChangeListener { _, focused ->
@@ -69,29 +56,29 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun validName(): CharSequence {
+    private fun validName(): CharSequence? {
         val userNameText = binding.textInputName.editText?.text.toString()
 
         if (userNameText.isEmpty()) {
             return getString(R.string.invalid_name)
         }
 
-        return " "
+        return null
     }
 
     private fun confirmPasswordListener() {
         binding.textInputConfirmPassword.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.textInputConfirmPassword.helperText = validConfirmPassword()
+                binding.textInputPassword.helperText = validConfirmPassword()
             }
         }
     }
 
-    private fun validConfirmPassword(): CharSequence {
+    private fun validConfirmPassword(): CharSequence? {
         if (binding.textInputConfirmPassword.editText?.text.toString() != binding.textInputPassword.editText?.text.toString()) {
             return getString(R.string.invalid_confirm_password)
         }
-        return " "
+        return null
     }
 
     private fun passwordFocusListener() {
@@ -102,7 +89,7 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun validPassword(): CharSequence {
+    private fun validPassword(): CharSequence? {
         val userPasswordText = binding.textInputPassword.editText?.text.toString()
 
         if (userPasswordText.length < 8) {
@@ -121,7 +108,7 @@ class SignUpFragment : Fragment() {
             return getString(R.string.invalid_password_special_character)
         }
 
-        return " "
+        return null
     }
 
     private fun emailFocusListener() {
@@ -132,12 +119,12 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun validEmail(): CharSequence {
+    private fun validEmail(): CharSequence? {
         val userEmailText = binding.textInputEmail.editText?.text.toString()
         if (!Patterns.EMAIL_ADDRESS.matcher(userEmailText).matches()) {
             return getString(R.string.invalid_email)
         }
-        return " "
+        return null
     }
 
     private fun initFirebase() {
@@ -156,56 +143,52 @@ class SignUpFragment : Fragment() {
         }
 
         binding.buttonSignin.setOnClickListener {
-            checkInputTexts()
+            if (checkInputTexts()) {
+                signInWithEmailAndPassword()
+            }
         }
 
     }
 
-    private fun checkInputTexts() {
+    private fun signInWithEmailAndPassword() {
 
-        if (
-            binding.textInputEmail.helperText?.length == 1 &&
-            binding.textInputEmail.helperText?.length == 1 &&
-            binding.textInputPassword.helperText?.length == 1 &&
-            binding.textInputConfirmPassword.helperText?.length == 1
+        binding.progressBarSignin.visibility = View.VISIBLE
+
+        val name = binding.textInputName.editText?.text.toString()
+        val email = binding.textInputEmail.editText?.text.toString()
+        val password = binding.textInputPassword.editText?.text.toString()
+
+
+        mAuth?.createUserWithEmailAndPassword(email, password)
+            ?.addOnCompleteListener {
+                if (it.isSuccessful) {
+                    FirebaseDatabase.getInstance()
+                        .getReference("users")
+                        .child(FirebaseAuth.getInstance().currentUser!!.uid)
+                        .setValue(User(id, name, email, password))
+                        .addOnCompleteListener {
+                            viewModel.createUser(name, email, password)
+                            "User has been registered successfully".createToast()
+                            binding.progressBarSignin.visibility = View.GONE
+                            Navigation.findNavController(binding.root).navigate(R.id.signUpFragment_to_loginFragment)
+                        }.addOnFailureListener {
+                            "Failed to registered, try again".createToast()
+                        }
+
+                } else {
+                    it.exception?.message?.createToast()
+                    binding.progressBarSignin.visibility = View.GONE
+                }
+            }
+    }
+
+    private fun checkInputTexts(): Boolean {
+
+        if (binding.textInputName.helperText == null && binding.textInputEmail.helperText == null &&
+            binding.textInputPassword.helperText == null
         ) {
-            val name = binding.textInputName.editText?.text.toString()
-            val email = binding.textInputEmail.editText?.text.toString()
-            val password = binding.textInputPassword.editText?.text.toString()
 
-            viewModel.createUser(name, email, password)
-
-            mAuth?.createUserWithEmailAndPassword(email, password)
-                ?.addOnCompleteListener(OnCompleteListener {
-                    if (it.isSuccessful) {
-
-                        FirebaseDatabase.getInstance()
-                            .getReference("users")
-                            .child(FirebaseAuth.getInstance().currentUser!!.uid)
-                            .setValue(User(id, name, email, password))
-                            .addOnCompleteListener(OnCompleteListener { data ->
-                                if (data.isSuccessful) {
-                                    Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-                                } else {
-                                    Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
-                                }
-                            })
-
-
-                        Navigation.findNavController(binding.root)
-                            .navigate(R.id.signUpFragment_to_loginFragment)
-                    } else {
-                        viewModel.getUsers().observe(viewLifecycleOwner, Observer {
-                            if (it.data!= null){
-                                Toast.makeText(context, it.data.toString(), Toast.LENGTH_SHORT).show()
-                            }else{
-                                Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
-                            }
-                        })
-                        Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
-                    }
-                })
-
+            return true
         } else {
 
             binding.textInputName.helperText = validName()
@@ -217,7 +200,13 @@ class SignUpFragment : Fragment() {
             emailFocusListener()
             passwordFocusListener()
             confirmPasswordListener()
+
+            return false
         }
+    }
+
+    private fun String.createToast() {
+        Toast.makeText(context, this, Toast.LENGTH_SHORT).show()
     }
 
 }
