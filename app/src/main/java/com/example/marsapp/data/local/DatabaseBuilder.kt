@@ -2,6 +2,7 @@ package com.example.marsapp.data.local
 
 import android.content.Context
 import androidx.room.Room
+import com.example.marsapp.utils.Resource
 
 object DatabaseBuilder {
 
@@ -20,6 +21,6 @@ object DatabaseBuilder {
         Room.databaseBuilder(
             context.applicationContext,
             AppDatabase::class.java,
-            "mars-app-database"
+            Resource.MARS_DATABASE_NAME
         ).build()
 }
