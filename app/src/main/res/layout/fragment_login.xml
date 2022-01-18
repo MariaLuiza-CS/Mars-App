@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_light"
-    android:padding="32dp"
+    android:paddingVertical="32dp"
     tools:context=".ui.fragments.login.LoginFragment">
 
     <ImageView
@@ -26,6 +26,7 @@
         android:id="@+id/text_welcome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
         android:fontFamily="@font/spartan_bold"
         android:text="@string/text_welcome"
         android:textColor="@android:color/white"
@@ -39,10 +40,12 @@
         android:id="@+id/text_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/spartan_bold"
         android:text="@string/text_email"
         android:textColor="@android:color/white"
+
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/text_input_email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,11 +54,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_email"
-        style="@style/TextInputLayout"
+        style="@style/text_input_layout_login_and_signup"
         app:expandedHintEnabled="false"
+        app:helperText=" "
         app:hintAnimationEnabled="false"
         app:hintEnabled="false"
-        app:helperText=" "
         app:layout_constraintBottom_toTopOf="@id/text_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +82,7 @@
         android:id="@+id/text_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/spartan_bold"
         android:text="@string/text_password"
@@ -91,12 +95,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_password"
-        style="@style/TextInputLayout"
+        style="@style/text_input_layout_login_and_signup"
         app:endIconMode="password_toggle"
         app:endIconTint="@android:color/white"
         app:expandedHintEnabled="false"
-        app:hintAnimationEnabled="false"
         app:helperText=" "
+        app:hintAnimationEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_password">
@@ -110,7 +114,7 @@
             android:lines="1"
             android:textColor="@color/white"
             android:textStyle="italic"
-            tools:ignore="LabelFor"/>
+            tools:ignore="LabelFor" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,11 +123,13 @@
         android:id="@+id/button_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+
+        android:layout_marginBottom="6dp"
         android:background="@drawable/background_gradiant_button"
         android:fontFamily="@font/spartan_bold"
         android:text="@string/button_login"
         android:textAllCaps="false"
-        android:layout_marginBottom="6dp"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/text_no_account"

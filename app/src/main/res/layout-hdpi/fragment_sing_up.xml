@@ -25,15 +25,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black_light"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="27dp">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/button_go_login"
+            style="@style/Widget.AppCompat.ActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="35dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_baseline_arrow_back_24"
@@ -45,7 +45,6 @@
             android:id="@+id/text_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_signup"
             android:textColor="@android:color/white"
@@ -58,6 +57,7 @@
             android:id="@+id/text_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_name"
@@ -70,11 +70,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_name"
-            style="@style/TextInputLayout"
+            style="@style/text_input_layout_login_and_signup"
             app:expandedHintEnabled="false"
+            app:helperText=" "
             app:hintAnimationEnabled="false"
             app:hintEnabled="false"
-            app:helperText=" "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_name"
@@ -87,7 +87,7 @@
                 android:inputType="text|textPersonName"
                 android:lines="1"
                 android:textColor="@color/white"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,6 +95,7 @@
             android:id="@+id/text_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_email"
             android:textColor="@android:color/white"
@@ -106,13 +107,13 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_email"
-            style="@style/TextInputLayout"
+            style="@style/text_input_layout_login_and_signup"
             app:expandedHintEnabled="false"
+            app:helperText=" "
             app:hintAnimationEnabled="false"
             app:hintEnabled="false"
             app:layout_constraintBottom_toTopOf="@id/text_password"
             app:layout_constraintEnd_toEndOf="parent"
-            app:helperText=" "
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_email"
             app:startIconTint="@android:color/white">
@@ -124,7 +125,7 @@
                 android:inputType="text|textEmailAddress"
                 android:lines="1"
                 android:textColor="@color/white"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,6 +133,7 @@
             android:id="@+id/text_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_password"
             android:textColor="@android:color/white"
@@ -143,13 +145,13 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_password"
-            style="@style/TextInputLayout"
+            style="@style/text_input_layout_login_and_signup"
             app:endIconMode="password_toggle"
             app:endIconTint="@android:color/white"
             app:expandedHintEnabled="false"
+            app:helperText=" "
             app:hintAnimationEnabled="false"
             app:hintEnabled="false"
-            app:helperText=" "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_password">
@@ -161,7 +163,7 @@
                 android:inputType="textPassword"
                 android:lines="1"
                 android:textColor="@color/white"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,6 +171,7 @@
             android:id="@+id/text_confirm_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_confirm_password"
             android:textColor="@android:color/white"
@@ -180,7 +183,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_confirm_password"
-            style="@style/TextInputLayout"
+            style="@style/text_input_layout_login_and_signup"
             app:endIconMode="password_toggle"
             app:endIconTint="@android:color/white"
             app:expandedHintEnabled="false"
@@ -197,20 +200,21 @@
                 android:inputType="textPassword"
                 android:lines="1"
                 android:textColor="@color/white"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_signin"
-            android:layout_marginBottom="8dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/background_gradiant_button"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/button_signin"
             android:textAllCaps="false"
             android:textColor="@color/white"
+            android:layout_marginHorizontal="32dp"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@id/text_have_account"
             app:layout_constraintEnd_toEndOf="parent"
@@ -222,8 +226,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
-            android:fontFamily="@font/spartan_regular"
             android:layout_marginBottom="24dp"
+            android:fontFamily="@font/spartan_regular"
             android:text="@string/text_have_account"
             android:textColor="@android:color/white"
             android:textSize="14sp"

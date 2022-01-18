@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_light"
-    android:paddingHorizontal="32dp"
     android:paddingTop="32dp"
     tools:context=".ui.fragments.login.LoginFragment">
 
@@ -26,6 +25,7 @@
         android:id="@+id/text_welcome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
         android:layout_marginTop="100dp"
         android:fontFamily="@font/spartan_bold"
         android:text="@string/text_welcome"
@@ -40,6 +40,7 @@
         android:id="@+id/text_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
         android:layout_marginTop="64dp"
         android:fontFamily="@font/spartan_bold"
         android:text="@string/text_email"
@@ -52,7 +53,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_email"
-        style="@style/TextInputLayout"
+        style="@style/text_input_layout_login_and_signup"
         app:expandedHintEnabled="false"
         app:helperText=" "
         app:hintAnimationEnabled="false"
@@ -80,6 +81,7 @@
         android:id="@+id/text_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/spartan_bold"
         android:text="@string/text_password"
@@ -92,7 +94,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_password"
-        style="@style/TextInputLayout"
+        style="@style/text_input_layout_login_and_signup"
         app:endIconMode="password_toggle"
         app:endIconTint="@android:color/white"
         app:expandedHintEnabled="false"
@@ -121,6 +123,7 @@
         android:id="@+id/button_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/background_gradiant_button"

@@ -1,5 +1,6 @@
 package com.example.marsapp.ui.fragments.login
 
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -7,19 +8,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.marsapp.R
+import com.example.marsapp.data.local.database.DatabaseBuilder
+import com.example.marsapp.data.local.database.DatabaseHelperImpl
 import com.example.marsapp.databinding.FragmentLoginBinding
 import com.example.marsapp.ui.activities.home.HomeActivity
-import com.google.firebase.auth.FirebaseAuth
+import com.example.marsapp.utils.ViewModelFactory
 
 
 class LoginFragment : Fragment() {
 
+    private lateinit var viewModel: LoginFragmentViewModel
     private lateinit var binding: FragmentLoginBinding
-    private var mAuth: FirebaseAuth? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,15 +31,20 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.bind(view)
 
         initComponents()
-        initFirebase()
+        initViewModel()
         emailFocusListener()
         passwordFocusListener()
 
         return binding.root
     }
 
-    private fun initFirebase() {
-        mAuth = FirebaseAuth.getInstance()
+    private fun initViewModel() {
+        val dbHelper = DatabaseHelperImpl(DatabaseBuilder.getIntance(requireContext()))
+
+        val viewModelProvider = ViewModelFactory(dbHelper, Application())
+
+        viewModel = ViewModelProvider(requireActivity(),
+            viewModelProvider)[LoginFragmentViewModel::class.java]
     }
 
     private fun passwordFocusListener() {
@@ -118,33 +125,25 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun String.createToast() {
-        Toast.makeText(context, this, Toast.LENGTH_SHORT).show()
-    }
-
     private fun loginWithEmail() {
+
+        initObservers()
+
         binding.progressBarLogin.visibility = View.VISIBLE
         val email = binding.textInputEmail.editText?.text.toString()
         val password = binding.textInputPassword.editText?.text.toString()
 
-        mAuth?.signInWithEmailAndPassword(email, password)?.addOnCompleteListener {
-            if (it.isSuccessful) {
-                val currentUser = FirebaseAuth.getInstance().currentUser
+        viewModel.loginUser(email, password)
 
-                if (currentUser!!.isEmailVerified) {
-                    binding.progressBarLogin.visibility = View.GONE
-                    startActivity(Intent(context, HomeActivity::class.java))
-                } else {
-                    currentUser.sendEmailVerification()
-                    binding.progressBarLogin.visibility = View.GONE
-                    "Please check your email to verify your account!".createToast()
-                }
-            } else {
+    }
+
+    private fun initObservers() {
+        viewModel.getIsUserEmailVerified().observe(viewLifecycleOwner, {
+            if (it){
                 binding.progressBarLogin.visibility = View.GONE
-                it.exception?.message?.createToast()
+                startActivity(Intent(context, HomeActivity::class.java))
             }
-        }
-
+        })
     }
 
 }

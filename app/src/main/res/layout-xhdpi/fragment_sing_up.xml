@@ -24,15 +24,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black_light"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="27dp">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/button_go_login"
+            style="@style/Widget.AppCompat.ActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="35dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_baseline_arrow_back_24"
@@ -44,7 +44,6 @@
             android:id="@+id/text_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_signup"
             android:textColor="@android:color/white"
@@ -57,6 +56,7 @@
             android:id="@+id/text_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginTop="84dp"
             android:fontFamily="@font/spartan_bold"
             android:text="@string/text_name"
@@ -69,7 +69,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_name"
-            style="@style/TextInputLayout"
+            style="@style/text_input_layout_login_and_signup"
             app:expandedHintEnabled="false"
             app:helperText=" "
             app:hintAnimationEnabled="false"
@@ -92,13 +92,8 @@
 
         <TextView
             android:id="@+id/text_email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/spartan_bold"
+            style="@style/text_view_login_and_signup"
             android:text="@string/text_email"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/text_input_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +101,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_email"
-            style="@style/TextInputLayout"
+            style="@style/text_input_layout_login_and_signup"
             app:expandedHintEnabled="false"
             app:helperText=" "
             app:hintAnimationEnabled="false"
@@ -130,13 +125,8 @@
 
         <TextView
             android:id="@+id/text_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/spartan_bold"
+            style="@style/text_view_login_and_signup"
             android:text="@string/text_password"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/text_input_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -144,7 +134,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_password"
-            style="@style/TextInputLayout"
+            style="@style/text_input_layout_login_and_signup"
             app:endIconMode="password_toggle"
             app:endIconTint="@android:color/white"
             app:expandedHintEnabled="false"
@@ -168,13 +158,8 @@
 
         <TextView
             android:id="@+id/text_confirm_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/spartan_bold"
+            style="@style/text_view_login_and_signup"
             android:text="@string/text_confirm_password"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/text_input_confirm_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -182,7 +167,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_confirm_password"
-            style="@style/TextInputLayout"
+            style="@style/text_input_layout_login_and_signup"
             app:endIconMode="password_toggle"
             app:endIconTint="@android:color/white"
             app:expandedHintEnabled="false"
@@ -207,6 +192,7 @@
             android:id="@+id/button_signin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/background_gradiant_button"
             android:fontFamily="@font/spartan_bold"
