@@ -28,6 +28,11 @@
     <!-- Content Descriptions -->
     <string name="content_description_image_mars_logo">Logo of the app</string>
     <string name="content_description_image_sun">Image of the sun</string>
+    <string name="content_description_image_user_icon">Icon profile of the user</string>
+    <string name="content_description_image_account_icon">Icon account of the user</string>
+    <string name="content_description_image_logout_icon">Logout icon of the app</string>
+    <string name="content_description_image_help_icon">Help icon of the user</string>
+    <string name="content_description_image_button_edit_user">Image of the edit icon</string>
     <!-- Content Descriptions -->
 
 
@@ -38,6 +43,7 @@
     <string name="button_login">Login</string>
     <string name="text_no_account">Don’t have an account?</string>
     <string name="text_go_signup">Sign Up</string>
+    <string name="toast_user_email_not_verified">Please check your email to verify your account!</string>
     <!---->
 
     <!-- Sign Up Fragment -->
@@ -49,6 +55,14 @@
     <string name="text_go_login">Login</string>
     <string name="invalid_confirm_password">Different Password</string>
     <string name="invalid_name">Must contain something</string>
+    <string name="toast_user_registered_successfully">User has been registered successfully</string>
+
+    <!---->
+
+    <!-- User Fragment -->
+    <string name="text_view_account">Account</string>
+    <string name="text_view_logout">Logout</string>
+    <string name="text_view_help">Help</string>
     <!---->
 
     <!-- Fragments -->

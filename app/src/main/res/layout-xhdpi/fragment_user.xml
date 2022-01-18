@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_user"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_light"
     tools:context=".ui.fragments.user.UserFragment">
@@ -10,7 +11,7 @@
     <View
         android:id="@+id/view_background_user"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:background="@drawable/background_gradiant_view_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,8 +19,8 @@
 
     <ImageView
         android:id="@+id/image_user_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:contentDescription="@string/content_description_image_user_icon"
         android:src="@drawable/ic_alien"
         app:layout_constraintBottom_toBottomOf="@id/view_background_user"
@@ -29,8 +30,8 @@
 
     <ImageButton
         android:id="@+id/image_button_edit_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/content_description_image_button_edit_user"
         android:src="@drawable/ic_baseline_edit_24"
@@ -40,10 +41,10 @@
 
     <ImageView
         android:id="@+id/image_account_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="64dp"
         android:contentDescription="@string/content_description_image_account_icon"
         android:src="@drawable/ic_baseline_person_24"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,10 +60,10 @@
 
     <ImageView
         android:id="@+id/image_logout_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:contentDescription="@string/content_description_image_logout_icon"
         android:src="@drawable/ic_baseline_logout_24"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,10 +79,10 @@
 
     <ImageView
         android:id="@+id/image_help_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:contentDescription="@string/content_description_image_help_icon"
         android:src="@drawable/ic_baseline_help_24"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,5 +95,4 @@
         app:layout_constraintBottom_toBottomOf="@id/image_help_icon"
         app:layout_constraintStart_toEndOf="@id/image_help_icon"
         app:layout_constraintTop_toTopOf="@id/image_help_icon" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

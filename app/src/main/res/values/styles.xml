@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="text_input_layout_login_and_signup" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColorHint">@color/white_dark</item>
@@ -16,5 +16,25 @@
         <item name="startIconTint">@android:color/white</item>
         <item name="helperTextEnabled">true</item>
         <item name="helperTextTextColor">@color/yellow_dark</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">32dp</item>
+    </style>
+
+    <style name="text_view_user_fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">6dp</item>
+        <item name="android:fontFamily">@font/spartan_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="text_view_login_and_signup">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:fontFamily">@font/spartan_bold</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">32dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>
