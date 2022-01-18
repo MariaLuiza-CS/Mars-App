@@ -1,21 +1,27 @@
 package com.example.marsapp.ui.fragments.signup
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marsapp.data.local.entity.DatabaseHelper
+import com.example.marsapp.data.local.database.DatabaseHelper
 import com.example.marsapp.data.local.entity.User
+import com.example.marsapp.data.repository.AppRepository
 import com.example.marsapp.utils.Resource
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
-class SignUpFragmentViewModel(private val dbHelper: DatabaseHelper) : ViewModel() {
+class SignUpFragmentViewModel(private val dbHelper: DatabaseHelper, application: Application) :
+    ViewModel() {
 
     private val usersList = MutableLiveData<Resource<List<User>>>()
+    private val appRepository = AppRepository(application)
+    private var userMutableLiveData: MutableLiveData<FirebaseUser>
 
     init {
         fetchAllUsers()
+        userMutableLiveData = appRepository.getUserMutableLiveData()
     }
 
     private fun fetchAllUsers() {
@@ -29,7 +35,12 @@ class SignUpFragmentViewModel(private val dbHelper: DatabaseHelper) : ViewModel(
         }
     }
 
-    fun createUser(name: String, email: String, password: String) {
+    fun registerUser(name: String, email: String, password: String) {
+        appRepository.registerUser(name, email, password)
+        createUser(name, email, password)
+    }
+
+    private fun createUser(name: String, email: String, password: String) {
         viewModelScope.launch {
             try {
                 dbHelper.insertUser(User(0, name, email, password))
@@ -39,8 +50,8 @@ class SignUpFragmentViewModel(private val dbHelper: DatabaseHelper) : ViewModel(
         }
     }
 
-    fun getUsers():LiveData<Resource<List<User>>>{
-        return usersList
+    fun getUserMutableLiveData(): MutableLiveData<FirebaseUser> {
+        return userMutableLiveData
     }
 
 

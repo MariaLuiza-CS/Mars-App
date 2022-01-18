@@ -1,5 +1,6 @@
 package com.example.marsapp.ui.fragments.signup
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -9,21 +10,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.marsapp.databinding.FragmentSingUpBinding
-import com.google.firebase.auth.FirebaseAuth
 import androidx.lifecycle.ViewModelProvider
 import com.example.marsapp.R
 import com.example.marsapp.utils.ViewModelFactory
-import com.example.marsapp.data.local.DatabaseBuilder
-import com.example.marsapp.data.local.DatabaseHelperImpl
-import com.example.marsapp.data.local.entity.User
-import com.google.firebase.database.FirebaseDatabase
+import com.example.marsapp.data.local.database.DatabaseBuilder
+import com.example.marsapp.data.local.database.DatabaseHelperImpl
 
 
 class SignUpFragment : Fragment() {
 
     private lateinit var viewModel: SignUpFragmentViewModel
     private lateinit var binding: FragmentSingUpBinding
-    private var mAuth: FirebaseAuth? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,19 +30,33 @@ class SignUpFragment : Fragment() {
         binding = FragmentSingUpBinding.bind(view)
 
         initComponents()
-        initFirebase()
+        initViewModel()
         nameFocusListener()
         emailFocusListener()
         passwordFocusListener()
         confirmPasswordListener()
 
-        val dbHelper = DatabaseHelperImpl(DatabaseBuilder.getIntance(requireContext()))
+        return binding.root
+    }
 
-        val viewModelProvider = ViewModelFactory(dbHelper)
+    private fun initViewModel() {
+        val dbHelper = DatabaseHelperImpl(DatabaseBuilder.getInstance(requireContext()))
+
+        val viewModelProvider = ViewModelFactory(dbHelper, Application())
+
         viewModel = ViewModelProvider(requireActivity(),
             viewModelProvider)[SignUpFragmentViewModel::class.java]
+    }
 
-        return binding.root
+    private fun initViewModelObservers() {
+        viewModel.getUserMutableLiveData().observe(viewLifecycleOwner, {
+            if (it != null) {
+                getString(R.string.toast_user_registered_successfully).createToast()
+                binding.progressBarSignin.visibility = View.GONE
+                Navigation.findNavController(binding.root)
+                    .navigate(R.id.signUpFragment_to_loginFragment)
+            }
+        })
     }
 
     private fun nameFocusListener() {
@@ -127,10 +138,6 @@ class SignUpFragment : Fragment() {
         return null
     }
 
-    private fun initFirebase() {
-        mAuth = FirebaseAuth.getInstance()
-    }
-
     private fun initComponents() {
         binding.buttonGoLogin.setOnClickListener {
             Navigation.findNavController(binding.root)
@@ -152,34 +159,15 @@ class SignUpFragment : Fragment() {
 
     private fun signInWithEmailAndPassword() {
 
+        initViewModelObservers()
+
         binding.progressBarSignin.visibility = View.VISIBLE
 
         val name = binding.textInputName.editText?.text.toString()
         val email = binding.textInputEmail.editText?.text.toString()
         val password = binding.textInputPassword.editText?.text.toString()
 
-
-        mAuth?.createUserWithEmailAndPassword(email, password)
-            ?.addOnCompleteListener {
-                if (it.isSuccessful) {
-                    FirebaseDatabase.getInstance()
-                        .getReference("users")
-                        .child(FirebaseAuth.getInstance().currentUser!!.uid)
-                        .setValue(User(id, name, email, password))
-                        .addOnCompleteListener {
-                            viewModel.createUser(name, email, password)
-                            "User has been registered successfully".createToast()
-                            binding.progressBarSignin.visibility = View.GONE
-                            Navigation.findNavController(binding.root).navigate(R.id.signUpFragment_to_loginFragment)
-                        }.addOnFailureListener {
-                            "Failed to registered, try again".createToast()
-                        }
-
-                } else {
-                    it.exception?.message?.createToast()
-                    binding.progressBarSignin.visibility = View.GONE
-                }
-            }
+        viewModel.registerUser(name, email, password)
     }
 
     private fun checkInputTexts(): Boolean {

@@ -1,4 +1,6 @@
-package com.example.marsapp.data.local.entity
+package com.example.marsapp.data.local.database
+
+import com.example.marsapp.data.local.entity.User
 
 interface DatabaseHelper {
 

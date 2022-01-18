@@ -39,7 +39,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        val dbHelper = DatabaseHelperImpl(DatabaseBuilder.getIntance(requireContext()))
+        val dbHelper = DatabaseHelperImpl(DatabaseBuilder.getInstance(requireContext()))
 
         val viewModelProvider = ViewModelFactory(dbHelper, Application())
 

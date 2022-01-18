@@ -1,4 +1,4 @@
-package com.example.marsapp.data.local
+package com.example.marsapp.data.local.database
 
 import android.content.Context
 import androidx.room.Room
@@ -8,7 +8,7 @@ object DatabaseBuilder {
 
     private var INSTANCE: AppDatabase? = null
 
-    fun getIntance(context: Context):AppDatabase{
+    fun getInstance(context: Context): AppDatabase {
         if (INSTANCE == null){
             synchronized(AppDatabase::class){
                 INSTANCE = buildRoomDb(context)

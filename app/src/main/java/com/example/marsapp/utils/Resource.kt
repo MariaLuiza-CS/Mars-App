@@ -20,6 +20,10 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
         const val MARS_DATABASE_NAME = "mars-app-database"
         const val MARS_DATABASE_VERSION = 1
         //Database const
+
+        //Firebase Database
+        const val FIREBASE_DATABASE_PATH_USER = "users"
+        //Firebase Database
     }
 
 }
