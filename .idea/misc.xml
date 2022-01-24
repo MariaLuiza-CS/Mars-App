@@ -10,11 +10,13 @@
         <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.20260416666666667" />
-        <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-hdpi/activity_home.xml" value="0.33" />
+        <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-hdpi/activity_home.xml" value="0.2" />
+        <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-hdpi/activity_main.xml" value="0.14018087855297157" />
         <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-hdpi/fragment_login.xml" value="0.25" />
         <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-hdpi/fragment_sing_up.xml" value="0.33" />
         <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-hdpi/fragment_user.xml" value="0.33" />
         <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-xhdpi/activity_home.xml" value="0.15" />
+        <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-xhdpi/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-xhdpi/fragment_login.xml" value="0.12" />
         <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-xhdpi/fragment_sing_up.xml" value="0.12" />
         <entry key="..\:/Users/maria/OneDrive/MarsApp/app/src/main/res/layout-xhdpi/fragment_user.xml" value="0.12" />

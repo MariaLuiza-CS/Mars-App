@@ -14,6 +14,7 @@ class AppRepository(private var application: Application) {
 
     private var userMutableLiveData: MutableLiveData<FirebaseUser> = MutableLiveData<FirebaseUser>()
     private var isUserEmailVerified: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    private var isUserDisconnect: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun registerUser(name: String, email: String, password: String) {
@@ -61,12 +62,26 @@ class AppRepository(private var application: Application) {
         }
     }
 
+    fun logoutUser() {
+        try {
+            firebaseAuth.signOut()
+            isUserDisconnect.postValue(true)
+        } catch (e: Exception) {
+            isUserDisconnect.postValue(false)
+            Toast.makeText(application.applicationContext, e.message, Toast.LENGTH_SHORT).show()
+        }
+    }
+
     fun getUserMutableLiveData(): MutableLiveData<FirebaseUser> {
         return userMutableLiveData
     }
 
     fun getIsUserEmailVerified(): MutableLiveData<Boolean> {
         return isUserEmailVerified
+    }
+
+    fun getIsUserDisconnect(): MutableLiveData<Boolean> {
+        return isUserDisconnect
     }
 
 }

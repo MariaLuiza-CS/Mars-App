@@ -20,4 +20,5 @@
         android:name="com.example.marsapp.ui.fragments.user.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" />
+
 </navigation>
