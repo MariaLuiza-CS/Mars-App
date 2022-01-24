@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "430809593317",
+    "project_id": "mars--app",
+    "storage_bucket": "mars--app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430809593317:android:df478e963c22b4616aeb0c",
+        "android_client_info": {
+          "package_name": "com.example.marsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430809593317-7mhfggn5hv4e62ot8ddk7j25gkvi73ak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5iu6S5RkT9sg0it51CRLgMCtnMAx37ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430809593317-7mhfggn5hv4e62ot8ddk7j25gkvi73ak.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
